@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
+{ inputs, lib, config, pkgs, ... }:
 
 {
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ebber";
@@ -69,8 +72,21 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+	programs.bash = {
+		enable = true;
+		enableCompletion = true;
+		shellAliases = {
+			test = "echo test";
+		};
+	};
+
+
+	programs.git = {
+		enable = true;
+		userName = "Eldahl";
+		userEmail = "71466904+eldahl@users.noreply.github.com";
+	};
 }

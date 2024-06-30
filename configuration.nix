@@ -9,7 +9,7 @@
 		[ # Include the results of the hardware scan.
       			./hardware-configuration.nix
 			inputs.home-manager.nixosModules.default
-    		];
+		];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -38,13 +38,6 @@
     		];
   	}];
 
-	home-manager = {
-		extraSpecialArgs = { inherit inputs; };
-		users = {
-			"ebber" = import ./home.nix;
-		};
-	};
-
 	networking.hostName = "desktop"; # Define your hostname.
   	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -52,9 +45,22 @@
 	# networking.proxy.default = "http://user:password@proxy:port/";
 	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-	# Enable networking
+	# Enable networking and set dns servers to cloudflare
 	networking.networkmanager.enable = true;
+	networking.dhcpcd.extraConfig = "nohook resolv.conf";
+	networking.networkmanager.dns = "none";
+	networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+  
+	networking.firewall = {
+	  enable = true;
+	  allowedTCPPorts = [ 3000 ];
+	  #allowedUDPPortsRanges = [
+	  #  { from = 4000; to = 4008; }
+	  #  { from = 8000; to = 8010; }
+	  #];
+	};
 
+	
 	# Set your time zone.
 	time.timeZone = "Europe/Copenhagen";
 
@@ -148,17 +154,23 @@
 			vscodium
 			
 			element-desktop
-			signal-desktop	
+			signal-desktop
+
+			vesktop
+
+			steam
 			
 			spotify
 
 			bitwarden-desktop
 			
 			obsidian
+
+			dig
+			ldns
+
+			imagemagick
 			
-			wine64
-			winetricks
-			bottles
 		];
 	};
 
@@ -173,14 +185,30 @@
   	environment.systemPackages = with pkgs; [
 		keymapp
 		zsa-udev-rules
+		neovim
+		xclip
 		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   		wget
 		git
 		gh
 		htop
 		openvpn
-		vesktop
+
+		wine64
+		winetricks
+		bottles
+
+		syncthing
+		syncthingtray
+
+		# Development tools/libraries
+		clang
+		clang-tools
+		nodejs_22
+		freeglut
 	];
+
+	environment.pathsToLink = ["/share/bash-completion"];
 
 	# Some programs need SUID wrappers, can be configured further or are
 	# started in user sessions.
@@ -207,7 +235,7 @@
 	# this value at the release version of the first install of this system.
 	# Before changing this value read the documentation for this option
 	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  	system.stateVersion = "24.05"; # Did you read the comment?
+	system.stateVersion = "24.05"; # Did you read the comment?
   
   	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
