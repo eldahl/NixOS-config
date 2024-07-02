@@ -50,6 +50,9 @@
 	networking.dhcpcd.extraConfig = "nohook resolv.conf";
 	networking.networkmanager.dns = "none";
 	networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+
+	# Wake on lan for main interface
+	networking.interfaces.eno1.wakeOnLan.enable = true;
   
 	networking.firewall = {
 	  enable = true;
@@ -140,7 +143,9 @@
 
 	# Enable touchpad support (enabled default in most desktopManager).
 	# services.xserver.libinput.enable = true;
-
+	programs.steam = {
+		enable = true;
+	};
   	# Define a user account. Don't forget to set a password with ‘passwd’.
 	users.users.ebber = {
 		isNormalUser = true;
@@ -148,6 +153,7 @@
 		extraGroups = [ "networkmanager" "wheel" ];
 		packages = with pkgs; [
 			kdePackages.kate
+			kdePackages.kalk
 			thunderbird
 			
 			chromium
@@ -158,8 +164,6 @@
 
 			vesktop
 
-			steam
-			
 			spotify
 
 			bitwarden-desktop
@@ -168,11 +172,16 @@
 
 			dig
 			ldns
-
-			imagemagick
-			
+			runelite
+			protonup-qt
 		];
 	};
+
+	services.ollama = {
+	  enable = true;
+	  acceleration = "cuda";
+	};
+
 
   	# Install firefox.
   	programs.firefox.enable = true;
