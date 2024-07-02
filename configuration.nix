@@ -96,8 +96,8 @@
 
 	# Configure keymap in X11
 	services.xserver = {
-		layout = "dk";
-		xkbVariant = "";
+		xkb.layout = "dk";
+		xkb.variant = "";
 	};
 
   	# Enable the X10 windowing system.
