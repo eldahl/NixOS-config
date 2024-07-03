@@ -206,6 +206,8 @@
 		htop
 		openvpn
 
+		v4l2loopback
+
 		wine64
 		winetricks
 		bottles
