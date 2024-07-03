@@ -162,7 +162,8 @@
 			element-desktop
 			signal-desktop
 
-			vesktop
+			webcord
+			#vesktop
 
 			spotify
 
