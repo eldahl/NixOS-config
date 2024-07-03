@@ -171,6 +171,8 @@
 			
 			obsidian
 
+			obs-studio
+
 			dig
 			ldns
 			runelite
