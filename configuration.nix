@@ -30,6 +30,10 @@
 	# v4l2loopback is for virtual camera using OBS
 	# 
 	boot.kernelModules = [ "v4l2loopback" ];
+	boot.extraModprobeConfig = ''
+	  options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+	'';
+	security.polkit.enable = true;
 
 	# Disable password prompt for sudo commands
 	security.sudo.extraRules= [{  
@@ -202,7 +206,8 @@
 		keymapp
 		zsa-udev-rules
 		neovim
-		xclip
+		wl-copy
+		wl-paste
 		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   		wget
 		git
