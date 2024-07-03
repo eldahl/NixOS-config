@@ -27,6 +27,10 @@
   boot.initrd.luks.devices."luks-daa6f869-d6f4-4090-a639-ccc2b0cc306c".keyFile = "/crypto_keyfile.bin";
   boot.initrd.luks.devices."luks-0d07dc1d-0df5-41cd-bcdf-64954493b2df".keyFile = "/crypto_keyfile.bin";
   	
+	# v4l2loopback is for virtual camera using OBS
+	# 
+	boot.kernelModules = [ "v4l2loopback" ];
+
 	# Disable password prompt for sudo commands
 	security.sudo.extraRules= [{  
 		users = [ "ebber" ];
@@ -205,8 +209,6 @@
 		gh
 		htop
 		openvpn
-
-		v4l2loopback
 
 		wine64
 		winetricks
