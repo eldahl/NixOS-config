@@ -132,7 +132,8 @@
 		nvidiaSettings = true;
 
 		#package = config.boot.kernelPackages.nvidiaPackages.stable;
-		package = config.boot.kernelPackages.nvidiaPackages.beta;
+		#package = config.boot.kernelPackages.nvidiaPackages.beta;
+		package = config.boot.kernelPackages.nvidiaPackages.latest;
 
 	};
 
@@ -202,7 +203,7 @@
 
   	# Allow unfree packages
   	nixpkgs.config.allowUnfree = true;
-
+	environment.sessionVariables.NIXOS_OZONE_WL = "1";
   	# List packages installed in system profile. To search, run:
   	# $ nix search wget
   	environment.systemPackages = with pkgs; [
@@ -216,6 +217,8 @@
 		gh
 		htop
 		openvpn
+
+		xwayland
 
 		wine64
 		winetricks
