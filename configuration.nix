@@ -206,8 +206,7 @@
 		keymapp
 		zsa-udev-rules
 		neovim
-		wl-copy
-		wl-paste
+		wl-clipboard
 		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   		wget
 		git
