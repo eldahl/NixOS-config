@@ -225,6 +225,7 @@
 		xwayland
 
 		kitty
+		starship
 
 		wine64
 		winetricks
