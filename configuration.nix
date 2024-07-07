@@ -26,7 +26,8 @@
 
   boot.initrd.luks.devices."luks-daa6f869-d6f4-4090-a639-ccc2b0cc306c".keyFile = "/crypto_keyfile.bin";
   boot.initrd.luks.devices."luks-0d07dc1d-0df5-41cd-bcdf-64954493b2df".keyFile = "/crypto_keyfile.bin";
-  	
+      
+
 	# v4l2loopback is for virtual camera using OBS
 	# 
 	boot.kernelModules = [ "v4l2loopback" ];
@@ -67,7 +68,7 @@
   
 	networking.firewall = {
 	  enable = true;
-	  allowedTCPPorts = [ 3000 ];
+	  allowedTCPPorts = [ 3000 25546 ];
 	  #allowedUDPPortsRanges = [
 	  #  { from = 4000; to = 4008; }
 	  #  { from = 8000; to = 8010; }
@@ -141,18 +142,18 @@
 	hardware.pulseaudio.enable = false;
 	security.rtkit.enable = true;
 	services.pipewire = {
-	enable = true;
-	alsa.enable = true;
-	alsa.support32Bit = true;
-	pulse.enable = true;
-	# If you want to use JACK applications, uncomment this
-	#jack.enable = true;
+	  enable = true;
+	  alsa.enable = true;
+	  alsa.support32Bit = true;
+	  pulse.enable = true;
+	  # If you want to use JACK applications, uncomment this
+	  #jack.enable = true;
 
-	# use the example session manager (no others are packaged yet so this is enabled by default,
-	# no need to redefine it in your config for now)
-	#media-session.enable = true;
+	  # use the example session manager (no others are packaged yet so this is enabled by default,
+	  # no need to redefine it in your config for now)
+	  #media-session.enable = true;
 	};
-
+	services.usbmuxd.enable = true;
 	# Enable touchpad support (enabled default in most desktopManager).
 	# services.xserver.libinput.enable = true;
 	programs.steam = {
@@ -204,6 +205,7 @@
   	# Allow unfree packages
   	nixpkgs.config.allowUnfree = true;
 	environment.sessionVariables.NIXOS_OZONE_WL = "1";
+	environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
   	# List packages installed in system profile. To search, run:
   	# $ nix search wget
   	environment.systemPackages = with pkgs; [
@@ -217,8 +219,12 @@
 		gh
 		htop
 		openvpn
-
+		
+		idevicerestore
+		
 		xwayland
+
+		kitty
 
 		wine64
 		winetricks
