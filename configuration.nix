@@ -117,7 +117,7 @@
   	services.xserver.enable = true;
 	
 	# NVIDIA Driver
-	hardware.opengl = {
+	hardware.graphics = {
 		enable = true;
 	};
 	services.xserver.videoDrivers = ["nvidia"];
@@ -169,9 +169,13 @@
 			kdePackages.kalk
 			thunderbird
 			
+
 			chromium
 			vscodium
 			
+			gimp
+			rawtherapee
+
 			element-desktop
 			signal-desktop
 
@@ -182,6 +186,8 @@
 
 			bitwarden-desktop
 			
+			unityhub
+
 			obsidian
 
 			obs-studio
@@ -192,6 +198,41 @@
 			protonup-qt
 		];
 	};
+  
+	stylix = {
+	  enable = true;
+	  autoEnable = true;
+	  image = ./DSC_0007-HD.png;
+	  base16Scheme = "${config.scheme}";
+	  cursor = {
+	    package = pkgs.kdePackages.breeze;
+	    name = "Breeze";
+	  };
+	  fonts = {
+	    sizes = {
+	      applications = 10;
+	      desktop = 10;
+	      terminal = 10;
+	      popups = 10;
+	    };
+
+	    monospace = {
+	      package = pkgs.liberation_ttf;
+	      name = "Liberation Mono";
+	    };
+	  };
+	  
+	  opacity = {
+	    applications = 0.5;
+	    terminal = 0.5;
+	    desktop = 0.5;
+	    popups = 0.5;
+	  };
+	};
+
+	  #polarity = "dark";
+	  #targets.kitty.enable = true;
+	  #targets.kde.enable = true;
 
 	services.ollama = {
 	  enable = true;
@@ -201,6 +242,16 @@
 
   	# Install firefox.
   	programs.firefox.enable = true;
+	nixpkgs.overlays =
+	let
+	  # Change this to a rev sha to pin
+	  moz-rev = "master";
+	  moz-url = builtins.fetchTarball { url = "https://github.com/mozilla/nixpkgs-mozilla/archive/${moz-rev}.tar.gz";};
+	  nightlyOverlay = (import "${moz-url}/firefox-overlay.nix");
+	in [
+	  nightlyOverlay
+	];
+	programs.firefox.package = pkgs.latest.firefox-nightly-bin;
 
   	# Allow unfree packages
   	nixpkgs.config.allowUnfree = true;
@@ -220,12 +271,15 @@
 		htop
 		openvpn
 		
+		gphoto2
+		libgphoto2
+		mtpfs
+	        gvfs
+
 		idevicerestore
+		usbmuxd
 		
 		xwayland
-
-		kitty
-		starship
 
 		wine64
 		winetricks
