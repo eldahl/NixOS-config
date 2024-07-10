@@ -78,6 +78,8 @@
 	
 	hardware.bluetooth.enable = true;
 	hardware.bluetooth.powerOnBoot = true;
+	
+	harware.xone.enable = true;
 
 	# Set your time zone.
 	time.timeZone = "Europe/Copenhagen";
