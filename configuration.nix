@@ -184,7 +184,8 @@
 
 			element-desktop
 			signal-desktop
-
+			
+			discord
 			webcord
 			#vesktop
 
@@ -262,12 +263,14 @@
   	# Allow unfree packages
   	nixpkgs.config.allowUnfree = true;
 	environment.sessionVariables.NIXOS_OZONE_WL = "1";
-	environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
+	environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
   	# List packages installed in system profile. To search, run:
   	# $ nix search wget
   	environment.systemPackages = with pkgs; [
 		keymapp
 		zsa-udev-rules
+		
+		unzip # For kickstart neovim
 		neovim
 		wl-clipboard
 		vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
