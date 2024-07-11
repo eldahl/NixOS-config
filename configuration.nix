@@ -262,7 +262,7 @@
   	# Allow unfree packages
   	nixpkgs.config.allowUnfree = true;
 	environment.sessionVariables.NIXOS_OZONE_WL = "1";
-	environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
+	environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
   	# List packages installed in system profile. To search, run:
   	# $ nix search wget
   	environment.systemPackages = with pkgs; [
@@ -277,6 +277,9 @@
 		htop
 		openvpn
 		
+		arduino-ide
+		fritzing
+
 		gphoto2
 		libgphoto2
 		mtpfs
