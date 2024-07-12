@@ -1,2 +1,5 @@
 # No rights for this
 console.png
+
+# Machine specific config
+hardware-configuration.nix
