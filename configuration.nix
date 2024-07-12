@@ -290,6 +290,7 @@
 
 		idevicerestore
 		usbmuxd
+		ifuse
 		
 		xwayland
 

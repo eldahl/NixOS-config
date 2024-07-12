@@ -85,6 +85,8 @@
     };
     settings = {
       confirm_os_window_close = 0;
+      background_image = "~/.dotfiles/console.png";
+      background_image_layout = "cscaled";
       dynamic_background_opacity = true;
       enable_audio_bell = true;
       mouse_hide_wait = "-1.0";
