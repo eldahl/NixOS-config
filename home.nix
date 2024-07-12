@@ -75,7 +75,6 @@
 
   };
 
-
   programs.kitty = lib.mkForce {
     enable = true;
     font = {
@@ -127,20 +126,19 @@
   };
 
   programs.bash = {
-	  enable = true;
-	  enableCompletion = true;
-	  shellAliases = {
-		  rebuild = "sudo nixos-rebuild switch --flake /home/ebber/.dotfiles/ --impure";
-	  };
-	  bashrcExtra = ''
-	    eval "$(starship init bash)"\n
-	  '';
+    enable = true;
+    enableCompletion = true;
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake /home/ebber/.dotfiles/ --impure";
+    };
+    bashrcExtra = ''
+      eval "$(starship init bash)"\n
+    '';
   };
 
-
   programs.git = {
-	  enable = true;
-	  userName = "Eldahl";
-	  userEmail = "71466904+eldahl@users.noreply.github.com";
+    enable = true;
+    userName = "Eldahl";
+    userEmail = "71466904+eldahl@users.noreply.github.com";
   };
 }
