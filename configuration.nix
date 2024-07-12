@@ -288,6 +288,7 @@
 		mtpfs
 	        gvfs
 
+		libimobiledevice
 		idevicerestore
 		usbmuxd
 		ifuse
