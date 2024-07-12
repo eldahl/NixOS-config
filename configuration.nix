@@ -307,6 +307,9 @@
 		clang-tools
 		nodejs_22
 		freeglut
+
+		cmake
+		gnumake
 	];
 
 	environment.pathsToLink = ["/share/bash-completion"];
