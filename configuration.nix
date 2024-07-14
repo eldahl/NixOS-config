@@ -188,6 +188,10 @@
       gimp
       rawtherapee
 
+      prusa-slicer
+      orca-slicer
+      gpx
+
       element-desktop
       signal-desktop
       
@@ -313,6 +317,8 @@
     clang-tools
     nodejs_22
     freeglut
+    
+    conda
 
     cmake
     gnumake
