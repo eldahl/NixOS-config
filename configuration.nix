@@ -319,6 +319,7 @@
     freeglut
     
     conda
+    cudaPackages.cudatoolkit
 
     cmake
     gnumake
