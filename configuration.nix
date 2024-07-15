@@ -318,6 +318,8 @@
     nodejs_22
     freeglut
     
+    hugo
+
     conda
     cudaPackages.cudatoolkit
 

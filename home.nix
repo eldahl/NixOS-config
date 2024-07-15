@@ -130,6 +130,7 @@
     enableCompletion = true;
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake /home/ebber/.dotfiles/ --impure";
+      hidemyass = "sudo openvpn ~/Downloads/AirVPN_Norway_TCP-443-Entry3.ovpn";
     };
     bashrcExtra = ''
       eval "$(starship init bash)"\n
