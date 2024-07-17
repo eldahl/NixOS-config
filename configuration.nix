@@ -274,6 +274,9 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
   
+  # Enable Docker
+  virtualisation.docker.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search [package]
   environment.systemPackages = with pkgs; [
@@ -319,9 +322,10 @@
     freeglut
     
     hugo
-
+    
     conda
     cudaPackages.cudatoolkit
+    nvidia-container-toolkit
 
     cmake
     gnumake
