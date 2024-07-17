@@ -276,6 +276,7 @@
   
   # Enable Docker
   virtualisation.docker.enable = true;
+  hardware.nvidia-container-toolkit.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search [package]
@@ -325,7 +326,6 @@
     
     conda
     cudaPackages.cudatoolkit
-    nvidia-container-toolkit
 
     cmake
     gnumake
