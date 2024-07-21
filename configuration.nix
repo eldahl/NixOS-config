@@ -181,6 +181,7 @@
       kdePackages.kalk
       thunderbird
       
+      vlc
 
       chromium
       vscodium
@@ -276,10 +277,10 @@
   
   # Enable Docker
   virtualisation.docker.enable = true;
+  virtualisation.docker.enableNvidia = true;
   
   # Nvidia hardware acceleration in containers
   hardware.nvidia-container-toolkit.enable = true;
-  virtualisation.containers.cdi.dynamic.nvidia.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search [package]
