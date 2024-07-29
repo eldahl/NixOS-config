@@ -192,6 +192,8 @@
       prusa-slicer
       orca-slicer
       gpx
+      
+      f3d
 
       element-desktop
       signal-desktop
@@ -271,11 +273,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   
-  # Issue tracker mentions it has been resolved, so wayland is reenabled.
-  # ~~https://bugzilla.mozilla.org/show_bug.cgi?id=1898476~~
-  # ~~Disable wayland in firefox due to explicit sync defect~~
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
+  # Disable wayland in firefox due to explicit sync defect
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
+  environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
   
   # Enable Docker
   virtualisation.docker.enable = true;
