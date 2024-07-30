@@ -303,6 +303,7 @@
     
     arduino-ide
     fritzing
+    freecad
 
     gphoto2
     libgphoto2
