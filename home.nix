@@ -78,7 +78,7 @@
   programs.kitty = lib.mkForce {
     enable = true;
     font = {
-      name = "Lineration Mono";
+      name = "LiterationMono Nerd Font";
       size = 9.5;
 
     };
