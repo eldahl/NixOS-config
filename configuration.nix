@@ -2,13 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
   # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [ 
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-  ];
+    ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -144,11 +144,13 @@
 
   };
 
+  
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    audio.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -269,14 +271,17 @@
     nightlyOverlay
   ];
   programs.firefox.package = pkgs.latest.firefox-nightly-bin;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
   
+  # Disable automatic startup
+  systemd.services.firefox.wantedBy = lib.mkForce [];
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1898476
   # Disable wayland in firefox due to explicit sync defect
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.MOZ_ENABLE_WAYLAND = "0";
+  
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
   
   # Enable Docker
   virtualisation.docker.enable = true;
