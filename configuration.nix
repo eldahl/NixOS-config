@@ -204,8 +204,6 @@
       webcord
       #vesktop
 
-      zoom-us
-
       spotify
 
       bitwarden-desktop
@@ -318,7 +316,7 @@
     libgphoto2
     mtpfs
     gvfs
-
+    
     libimobiledevice
     idevicerestore
     usbmuxd
