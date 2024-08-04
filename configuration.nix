@@ -307,6 +307,8 @@
     gh
     htop
     openvpn
+
+    nerdfonts
     
     arduino-ide
     fritzing

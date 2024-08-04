@@ -114,7 +114,7 @@
 	  "U+E5FA-U+E62B"
 	];
       in
-	(builtins.concatStringsSep "," mappings) + " Symbols Nerd Font";
+	(builtins.concatStringsSep "," mappings) + " LiterationMono Nerd Font";
     };
   };
 
