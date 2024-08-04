@@ -204,6 +204,8 @@
       webcord
       #vesktop
 
+      zoom-us
+
       spotify
 
       bitwarden-desktop
