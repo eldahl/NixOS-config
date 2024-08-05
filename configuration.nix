@@ -293,6 +293,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search [package]
   environment.systemPackages = with pkgs; [
+    # Make clicking links in apps work and other stuff
+    xdg-desktop-portal
+    xdg-desktop-portal-kde
+
     keymapp
     zsa-udev-rules
     
