@@ -290,12 +290,17 @@
   # Nvidia hardware acceleration in containers
   hardware.nvidia-container-toolkit.enable = true;
 
+  
+  xdg.portal.config.common.default = ["gtk" "kde"];
+
   # List packages installed in system profile. To search, run:
   # $ nix search [package]
   environment.systemPackages = with pkgs; [
     # Make clicking links in apps work and other stuff
     xdg-desktop-portal
     xdg-desktop-portal-kde
+    xdg-desktop-portal-gtk
+    xdg-utils
 
     keymapp
     zsa-udev-rules
